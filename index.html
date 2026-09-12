@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#193d36" />
+    <meta name="description" content="2026 国庆黔东南五天四夜旅行控制台" />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="icon" href="./icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="./icon.svg" />
+    <title>从梯田到鼓楼</title>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">2026 国庆 · 黔东南</p>
+          <h1>从梯田到鼓楼</h1>
+        </div>
+        <button class="icon-button" id="shareButton" aria-label="分享行程">↗</button>
+      </header>
+
+      <main id="app" class="page-stack" aria-live="polite"></main>
+
+      <nav class="bottom-nav" aria-label="主导航">
+        <button class="nav-item active" data-view="overview"><span>⌂</span><small>总览</small></button>
+        <button class="nav-item" data-view="route"><span>⌁</span><small>行程</small></button>
+        <button class="nav-item" data-view="prep"><span>✓</span><small>准备</small></button>
+        <button class="nav-item" data-view="expenses"><span>¥</span><small>费用</small></button>
+      </nav>
+    </div>
+
+    <div id="toast" class="toast" role="status"></div>
+    <script>
+      window.addEventListener("error", (event) => {
+        const target = document.querySelector("#app");
+        if (target) target.innerHTML = `<section class="page-title"><p class="eyebrow">原型诊断</p><h2>脚本加载失败</h2><p>${String(event.error?.message || event.message || "未知错误")}</p></section>`;
+      });
+      window.addEventListener("unhandledrejection", (event) => {
+        const target = document.querySelector("#app");
+        if (target) target.innerHTML = `<section class="page-title"><p class="eyebrow">原型诊断</p><h2>数据模块加载失败</h2><p>${String(event.reason?.message || event.reason || "未知错误")}</p></section>`;
+      });
+    </script>
+    <script type="module" src="./src/app.js"></script>
+  </body>
+</html>
