@@ -1,14 +1,18 @@
 {
   "name": "从梯田到鼓楼 · 黔东南旅行控制台",
   "short_name": "从梯田到鼓楼",
+  "id": "./",
   "description": "2026 国庆黔东南五天四夜旅行 PWA",
   "start_url": "./",
+  "scope": "./",
   "display": "standalone",
+  "orientation": "portrait",
+  "prefer_related_applications": false,
   "background_color": "#f7f4ed",
   "theme_color": "#193d36",
   "lang": "zh-CN",
   "icons": [
-    { "src": "./icon.svg", "sizes": "192x192", "type": "image/svg+xml", "purpose": "any maskable" },
-    { "src": "./icon.svg", "sizes": "512x512", "type": "image/svg+xml", "purpose": "any maskable" }
+    { "src": "./icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "./icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
   ]
 }

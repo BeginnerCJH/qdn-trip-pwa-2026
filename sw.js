@@ -1,10 +1,12 @@
-const CACHE_NAME = "qdn-trip-v5";
+const CACHE_NAME = "qdn-trip-v6";
 const ASSETS = [
   "./",
   "./index.html",
   "./styles.css",
   "./manifest.webmanifest",
   "./icon.svg",
+  "./icon-192.png",
+  "./icon-512.png",
   "./app.js",
   "./trip-data.js"
 ];
