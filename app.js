@@ -3,6 +3,54 @@ import { trip } from "./trip-data.js";
 const STORAGE_KEY = "qdn-trip-state-v3";
 const app = document.querySelector("#app");
 const toast = document.querySelector("#toast");
+const installButton = document.querySelector("#installButton");
+let deferredInstallPrompt = null;
+
+function isStandalone() {
+  return window.matchMedia?.("(display-mode: standalone)").matches || window.navigator.standalone === true;
+}
+
+function updateInstallButton() {
+  if (!installButton) return;
+  if (isStandalone()) {
+    installButton.textContent = "已安装";
+    installButton.disabled = true;
+    installButton.classList.add("installed");
+    return;
+  }
+  installButton.textContent = deferredInstallPrompt ? "安装应用" : "安装到手机";
+  installButton.disabled = false;
+  installButton.classList.remove("installed");
+  installButton.title = deferredInstallPrompt ? "安装到手机" : "请使用 Chrome 菜单安装";
+}
+
+async function installApp() {
+  if (isStandalone()) {
+    showToast("已经在 App 模式运行");
+    return;
+  }
+  if (!deferredInstallPrompt) {
+    showToast("请用手机 Chrome 菜单选择“安装应用”；若一直转圈，先清除本站数据后重试");
+    return;
+  }
+  deferredInstallPrompt.prompt();
+  const choice = await deferredInstallPrompt.userChoice;
+  deferredInstallPrompt = null;
+  updateInstallButton();
+  showToast(choice?.outcome === "accepted" ? "已发起安装，请稍等片刻" : "已取消安装");
+}
+
+window.addEventListener("beforeinstallprompt", (event) => {
+  event.preventDefault();
+  deferredInstallPrompt = event;
+  updateInstallButton();
+});
+window.addEventListener("appinstalled", () => {
+  deferredInstallPrompt = null;
+  updateInstallButton();
+  showToast("旅行 App 已安装到手机");
+});
+window.addEventListener("pageshow", updateInstallButton);
 
 if (new URLSearchParams(window.location.search).has("reset")) localStorage.removeItem(STORAGE_KEY);
 function parseState(value) {
@@ -399,6 +447,8 @@ async function shareTrip() {
 }
 
 document.querySelector("#shareButton").addEventListener("click", shareTrip);
+installButton?.addEventListener("click", installApp);
+updateInstallButton();
 
 if ("serviceWorker" in navigator) window.addEventListener("load", () => navigator.serviceWorker.register("./sw.js").catch(() => {}));
 

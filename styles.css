@@ -25,6 +25,9 @@ button { cursor: pointer; }
 .app-shell { width: min(100%, 760px); min-height: 100vh; margin: 0 auto; padding: 0 18px 96px; }
 .topbar { display: flex; align-items: flex-start; justify-content: space-between; padding: 28px 2px 20px; }
 .topbar h1 { margin: 4px 0 0; color: var(--forest); font: 800 clamp(24px, 7vw, 36px)/1.1 Georgia, "Songti SC", serif; letter-spacing: -0.04em; }
+.topbar-actions { display: flex; align-items: center; gap: 8px; }
+.install-button { min-height: 40px; padding: 0 12px; border: 1px solid var(--forest); border-radius: 13px; color: #fff8e8; background: var(--forest); font-size: 11px; font-weight: 800; box-shadow: var(--shadow); }
+.install-button.installed, .install-button:disabled { color: var(--forest-2); border-color: #cbdacc; background: #e7f0e5; box-shadow: none; }
 .eyebrow, .label, .item-time, .group-title { margin: 0; color: var(--muted); font-size: 11px; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
 .icon-button { width: 40px; height: 40px; border: 1px solid var(--line); border-radius: 50%; background: rgba(255,253,248,.84); color: var(--forest); font-size: 22px; box-shadow: var(--shadow); }
 .page-stack { display: grid; gap: 26px; }
@@ -98,6 +101,7 @@ button { cursor: pointer; }
 @media (max-width: 560px) {
   .app-shell { padding-right: 14px; padding-left: 14px; }
   .topbar { padding-top: 21px; }
+  .install-button { min-height: 36px; padding: 0 9px; font-size: 10px; }
   .hero-card { padding: 21px 19px; }
   .hero-card h2 { margin-top: 16px; }
   .departure-count { flex-basis: 61px; }.departure-count strong { font-size: 38px; }.departure-count span { font-size: 10px; }
