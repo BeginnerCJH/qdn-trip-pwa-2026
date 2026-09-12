@@ -2,6 +2,10 @@
 
 这是 2026 国庆黔东南五天四夜自驾旅行的短期手机 PWA 控制台。
 
+## Android APK
+
+项目同时提供 Capacitor Android 打包配置。提交到 GitHub 后，Actions 会自动构建一个可直接安装到小米等 Android 手机的 debug APK；打开仓库的 Actions，进入 `Build Android APK`，在运行记录底部下载 `qdn-trip-android-debug` artifact。
+
 ## 当前能力
 
 - 总览：出发倒计时、行动中心、酒店/车辆/高铁进度、硬节点提醒

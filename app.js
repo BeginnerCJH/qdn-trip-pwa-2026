@@ -7,13 +7,17 @@ const installButton = document.querySelector("#installButton");
 let deferredInstallPrompt = null;
 
 function isStandalone() {
-  return window.matchMedia?.("(display-mode: standalone)").matches || window.navigator.standalone === true;
+  const nativePlatform = window.Capacitor?.getPlatform?.();
+  return Boolean(
+    window.Capacitor?.isNativePlatform?.() || (nativePlatform && nativePlatform !== "web") ||
+    window.matchMedia?.("(display-mode: standalone)").matches || window.navigator.standalone === true
+  );
 }
 
 function updateInstallButton() {
   if (!installButton) return;
   if (isStandalone()) {
-    installButton.textContent = "已安装";
+    installButton.textContent = window.Capacitor?.isNativePlatform?.() ? "App 模式" : "已安装";
     installButton.disabled = true;
     installButton.classList.add("installed");
     return;
@@ -26,7 +30,7 @@ function updateInstallButton() {
 
 async function installApp() {
   if (isStandalone()) {
-    showToast("已经在 App 模式运行");
+    showToast(window.Capacitor?.isNativePlatform?.() ? "已经在 Android App 中运行" : "已经在 App 模式运行");
     return;
   }
   if (!deferredInstallPrompt) {
@@ -450,7 +454,7 @@ document.querySelector("#shareButton").addEventListener("click", shareTrip);
 installButton?.addEventListener("click", installApp);
 updateInstallButton();
 
-if ("serviceWorker" in navigator) window.addEventListener("load", () => navigator.serviceWorker.register("./sw.js").catch(() => {}));
+if ("serviceWorker" in navigator && !window.Capacitor?.isNativePlatform?.()) window.addEventListener("load", () => navigator.serviceWorker.register("./sw.js").catch(() => {}));
 
 try {
   render();
