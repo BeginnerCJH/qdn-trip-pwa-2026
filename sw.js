@@ -1,4 +1,4 @@
-const CACHE_NAME = "qdn-trip-v3";
+const CACHE_NAME = "qdn-trip-v5";
 const ASSETS = [
   "./",
   "./index.html",

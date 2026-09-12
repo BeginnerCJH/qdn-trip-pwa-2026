@@ -7,6 +7,17 @@ export const trip = {
   travelers: 3,
   drivers: 2,
   currentUserDrives: false,
+  members: [
+    { id: "driver-a", label: "司机 A", role: "主驾" },
+    { id: "driver-b", label: "司机 B", role: "副驾" },
+    { id: "member-c", label: "同行 C", role: "领队 / 乘客" }
+  ],
+  preferences: {
+    outboundStation: "广州南优先，附近车站可备选",
+    seat: "三人优先连座；二等座、无座均可接受",
+    returnWindow: "10/6 16:00—17:00 左右",
+    appUsage: "三人共同使用"
+  },
   status: {
     hotels: { done: 4, total: 4, label: "酒店" },
     vehicle: { done: 1, total: 1, label: "车辆" },
@@ -27,13 +38,14 @@ export const trip = {
     specs: "SUV · 1.4T · 5 座 · 自动 · 汽油 · 92 号 · 两驱",
     price: 615,
     coverage: "基础保障：车损自付约 ¥1500；三者险 ¥100 万；¥40/天已含",
-    note: "两位司机轮换；用户本人不驾驶。"
+    note: "两位司机轮换；用户本人不驾驶。",
+    mapQuery: "从江县从江大道与242国道交叉口"
   },
   stays: [
-    { date: "10/2", city: "三江", name: "三江农情酒店", room: "五楼观景家庭房", nights: 1, price: 174, status: "已确认" },
-    { date: "10/3", city: "加榜", name: "加榜梯田农家客栈", room: "牛耕·传统吊脚楼阳台观景三床房", nights: 1, price: 153, status: "已确认" },
-    { date: "10/4", city: "黎平", name: "黎平星辰电竞酒店", room: "5060-32G 四人开黑房", nights: 1, price: 173, status: "已确认" },
-    { date: "10/5", city: "从江", name: "神瑶天域大酒店（从江县政府店）", room: "瑶韵·江景双床房", nights: 1, price: 187, status: "已确认" }
+    { date: "10/2", city: "三江", name: "三江农情酒店", room: "五楼观景家庭房", nights: 1, price: 174, status: "已确认", query: "三江农情酒店" },
+    { date: "10/3", city: "加榜", name: "加榜梯田农家客栈", room: "牛耕·传统吊脚楼阳台观景三床房", nights: 1, price: 153, status: "已确认", query: "加榜梯田农家客栈" },
+    { date: "10/4", city: "黎平", name: "黎平星辰电竞酒店", room: "5060-32G 四人开黑房", nights: 1, price: 173, status: "已确认", query: "黎平星辰电竞酒店" },
+    { date: "10/5", city: "从江", name: "神瑶天域大酒店（从江县政府店）", room: "瑶韵·江景双床房", nights: 1, price: 187, status: "已确认", query: "神瑶天域大酒店 从江县政府店" }
   ],
   places: {
     chengyang: { name: "程阳八寨", city: "三江", query: "程阳八寨游客中心", tag: "侗寨" },
@@ -47,6 +59,7 @@ export const trip = {
   days: [
     {
       id: "day-1", date: "10/2", weekday: "周五", city: "三江", title: "第一次进入侗乡", mood: "从高铁到木楼群",
+      routeInfo: { distance: "高铁 + 约 20 公里接驳", travel: "约 30 分钟", buffer: "到站后预留接驳缓冲", focus: "下午进入程阳八寨" },
       risk: "中", items: [
         { time: "上午", type: "train", title: "广州 → 三江南", detail: "高铁待抢 · 广州南优先", ticketId: "train-outbound" },
         { time: "到站后", type: "transfer", title: "三江南 → 程阳八寨", detail: "约 20 公里 · 约 30 分钟 · 无车接驳", placeId: "chengyang" },
@@ -57,6 +70,7 @@ export const trip = {
     },
     {
       id: "day-2", date: "10/3", weekday: "周六", city: "从江", title: "去赶一场梯田日落", mood: "今天有一个硬时间点",
+      routeInfo: { distance: "约 80 公里山路", travel: "取车后按山路节奏", buffer: "10:30 取车不能迟", focus: "下午和日落看加榜" },
       risk: "高", items: [
         { time: "上午", type: "train", title: "三江南 → 从江", detail: "高铁待抢 · 目标 09:30 前到达", ticketId: "train-transfer" },
         { time: "10:30", type: "car", title: "从江高铁站店取车", detail: "Jeep 指南者 · 自动挡 · 两位司机" },
@@ -67,6 +81,7 @@ export const trip = {
     },
     {
       id: "day-3", date: "10/4", weekday: "周日", city: "黎平", title: "从晨雾走到古城", mood: "早起是今天的主菜",
+      routeInfo: { distance: "约 140 公里山路", travel: "上午完成主要转场", buffer: "晨景结束后直接出发", focus: "下午慢逛翘街" },
       risk: "中高", items: [
         { time: "06:30—09:30", type: "spot", title: "加榜梯田晨景", detail: "晨雾、梯田和村寨层次", placeId: "jiabang" },
         { time: "上午", type: "drive", title: "加榜 → 黎平", detail: "约 140 公里 · 途中按山路节奏行驶", placeId: "qiaojie" },
@@ -77,6 +92,7 @@ export const trip = {
     },
     {
       id: "day-4", date: "10/5", weekday: "周一", city: "从江", title: "深入黄岗，傍晚回到县城", mood: "前半段控制节奏，后半段从容收尾",
+      routeInfo: { distance: "约 130 公里合计", travel: "黄岗 + 岜沙两段山路", buffer: "20:00 还车前留出 30 分钟", focus: "黄岗不要停太短，岜沙安排白天" },
       risk: "高", items: [
         { time: "上午", type: "drive", title: "黎平 → 黄岗侗寨", detail: "约 70 公里 · 今天的主要时间风险", placeId: "huanggang" },
         { time: "上午 / 中午", type: "culture", title: "黄岗侗寨", detail: "鼓楼、原生态生活、侗歌；不要停留太短", placeId: "huanggang" },
@@ -88,6 +104,7 @@ export const trip = {
     },
     {
       id: "day-5", date: "10/6", weekday: "周二", city: "从江 → 广州", title: "在鼓楼边慢下来", mood: "上午留给从江，下午返程",
+      routeInfo: { distance: "县城短距离", travel: "上午慢逛", buffer: "下午提前到站", focus: "鼓楼、特产、返程" },
       risk: "中", items: [
         { time: "上午", type: "spot", title: "从江鼓楼 / 买特产", detail: "不再安排远距离景点" },
         { time: "下午", type: "train", title: "从江 → 广州", detail: "目标 16:00—17:00 左右 · 高铁待抢", ticketId: "train-return" }
@@ -103,7 +120,10 @@ export const trip = {
     { id: "task-6", label: "出发前确认加榜客栈进村和停车方式", done: false, group: "行程" },
     { id: "task-7", label: "确认租车订单、基础保障和取还车凭证", done: true, group: "车辆" },
     { id: "task-8", label: "准备充电宝、雨具、薄外套和防滑鞋", done: false, group: "行李" },
-    { id: "task-9", label: "准备现金/移动支付备用方案", done: false, group: "行李" }
+    { id: "task-9", label: "准备现金/移动支付备用方案", done: false, group: "行李" },
+    { id: "task-10", label: "给两位司机排好轮换顺序", done: false, group: "车辆" },
+    { id: "task-11", label: "把酒店和租车订单截图保存到手机", done: false, group: "资料" },
+    { id: "task-12", label: "出发前保存关键地点离线截图", done: false, group: "资料" }
   ],
   initialExpenses: [
     { id: "expense-hotel", title: "4 晚酒店", amount: 687, category: "住宿", paidBy: "未分配" },
@@ -114,5 +134,3 @@ export const trip = {
     { label: "铁路 12306 · 购票与起售时间", url: "https://www.12306.cn/index/" }
   ]
 };
-
-
