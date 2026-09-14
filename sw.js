@@ -1,4 +1,4 @@
-const CACHE_NAME = "qdn-trip-v7";
+const CACHE_NAME = "qdn-trip-v40";
 const ASSETS = [
   "./",
   "./index.html",
@@ -8,7 +8,20 @@ const ASSETS = [
   "./icon-192.png",
   "./icon-512.png",
   "./app.js",
-  "./trip-data.js"
+  "./trip-data.js",
+  "./trip-guide.js",
+  "./src/events.js",
+  "./src/state.js",
+  "./src/selectors.js",
+  "./src/format.js",
+  "./src/weather.js",
+  "./src/map.js",
+  "./src/views/overview.js",
+  "./src/views/route.js",
+  "./src/views/guide.js",
+  "./src/views/prep.js",
+  "./src/views/expenses.js",
+  "./src/views/tools.js"
 ];
 
 self.addEventListener("install", (event) => {
@@ -24,5 +37,16 @@ self.addEventListener("activate", (event) => {
 });
 
 self.addEventListener("fetch", (event) => {
-  event.respondWith(caches.match(event.request).then((cached) => cached || fetch(event.request)));
+  const request = event.request;
+  const url = new URL(request.url);
+  if (request.method !== "GET" || url.pathname.endsWith("/sw.js")) return;
+  if (["document", "script", "style"].includes(request.destination)) {
+    event.respondWith(fetch(request).then((response) => {
+      const copy = response.clone();
+      caches.open(CACHE_NAME).then((cache) => cache.put(request, copy));
+      return response;
+    }).catch(() => caches.match(request)));
+    return;
+  }
+  event.respondWith(caches.match(request).then((cached) => cached || fetch(request)));
 });

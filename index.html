@@ -6,7 +6,7 @@
     <meta name="theme-color" content="#193d36" />
     <meta name="description" content="2026 国庆黔东南五天四夜旅行控制台" />
     <link rel="manifest" href="./manifest.webmanifest" />
-    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./styles.css?v=40" />
     <link rel="icon" href="./icon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="./icon-192.png" />
     <title>从梯田到鼓楼</title>
@@ -17,6 +17,16 @@
         <div>
           <p class="eyebrow">2026 国庆 · 黔东南</p>
           <h1>从梯田到鼓楼</h1>
+          <div class="live-status" aria-live="polite">
+            <button class="live-chip calendar-chip" data-action="calendar-detail" type="button" aria-label="查看日期和行程详情">
+              <span class="live-chip-icon">▦</span>
+              <span class="live-chip-copy"><b id="liveDateTime">正在读取时间</b><small>当前时间</small></span>
+            </button>
+            <button class="live-chip weather-chip" data-action="weather-detail" type="button" aria-label="查看天气详情">
+              <span class="live-chip-icon">☼</span>
+              <span class="live-chip-copy"><b id="liveWeather">天气加载中</b><small id="liveWeatherCaption">实时天气 · 点击查看</small></span>
+            </button>
+          </div>
         </div>
         <div class="topbar-actions">
           <button class="install-button" id="installButton" type="button">安装应用</button>
@@ -46,6 +56,6 @@
         if (target) target.innerHTML = `<section class="page-title"><p class="eyebrow">原型诊断</p><h2>数据模块加载失败</h2><p>${String(event.reason?.message || event.reason || "未知错误")}</p></section>`;
       });
     </script>
-    <script type="module" src="./app.js"></script>
+    <script type="module" src="./app.js?v=40"></script>
   </body>
 </html>
