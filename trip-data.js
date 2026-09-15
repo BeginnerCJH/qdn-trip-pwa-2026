@@ -1,4 +1,4 @@
-import { tripGuide } from "./trip-guide.js?v=41";
+import { tripGuide } from "./trip-guide.js?v=42";
 
 export const trip = {
   id: "qdn-2026-national-day",

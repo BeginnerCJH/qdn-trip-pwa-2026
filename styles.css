@@ -303,3 +303,52 @@ button { cursor: pointer; }
 .location-row {
   min-width: 0;
 }
+
+/* Visual travel handbook: keep the authored posters expressive without replacing the executable trip controls. */
+.handbook-preview-card,
+.handbook-poster-card { display: grid; gap: 14px; padding: 17px; border: 1px solid #e4dccb; border-radius: 22px; background: linear-gradient(145deg, #fffaf0, #f7f4e9); box-shadow: var(--shadow); }
+.handbook-section-heading { align-items: start; }
+.handbook-section-heading > div { min-width: 0; }
+.handbook-section-heading h2 { margin-top: 4px; color: #5e4630; font: 800 21px/1.15 Georgia, "Songti SC", serif; }
+.handbook-section-heading p:last-child { max-width: 560px; margin: 7px 0 0; color: var(--muted); font-size: 11px; line-height: 1.55; }
+.handbook-cover { position: relative; display: grid; overflow: hidden; min-height: 220px; place-items: center; border: 1px solid #eadfca; border-radius: 17px; background: #e5d9bd; text-decoration: none; }
+.handbook-cover img { display: block; width: 100%; max-height: 470px; object-fit: contain; }
+.handbook-cover-copy { position: absolute; right: 12px; bottom: 12px; left: 12px; display: grid; gap: 3px; padding: 10px 12px; border: 1px solid rgba(255,255,255,.42); border-radius: 12px; color: #fffdf7; background: rgba(25,61,54,.84); backdrop-filter: blur(8px); }
+.handbook-cover-copy strong { font: 800 15px/1.2 Georgia, "Songti SC", serif; }
+.handbook-cover-copy small { color: #dce9dd; font-size: 10px; line-height: 1.45; }
+.handbook-day-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; }
+.handbook-day-card { display: grid; min-width: 0; padding: 0; overflow: hidden; border: 1px solid #e4dccb; border-radius: 14px; color: var(--ink); background: rgba(255,255,255,.62); text-align: left; cursor: pointer; }
+.handbook-day-card:hover { border-color: #b9cdb5; box-shadow: 0 8px 18px rgba(87,73,49,.1); }
+.handbook-day-image { display: block; overflow: hidden; aspect-ratio: 2 / 2.5; background: #e8dfcc; }
+.handbook-day-image img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+.handbook-day-copy { display: grid; gap: 4px; padding: 9px 9px 10px; }
+.handbook-day-copy .eyebrow { overflow: hidden; color: #92714a; font-size: 8px; text-overflow: ellipsis; white-space: nowrap; }
+.handbook-day-copy strong { display: -webkit-box; overflow: hidden; color: #5e4630; font: 800 12px/1.25 Georgia, "Songti SC", serif; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
+.handbook-day-copy small { display: -webkit-box; overflow: hidden; color: var(--muted); font-size: 9px; line-height: 1.45; -webkit-box-orient: vertical; -webkit-line-clamp: 3; }
+.handbook-poster-card { background: linear-gradient(145deg, #f7f4e9, #fffdf8); }
+.handbook-poster-card .section-heading .small-button { flex: 0 0 auto; white-space: nowrap; }
+.handbook-poster { display: block; overflow: hidden; border: 1px solid #e2d7bf; border-radius: 16px; background: #e8dfcc; text-align: center; }
+.handbook-poster img { display: block; width: 100%; max-height: min(820px, 78vh); object-fit: contain; }
+.handbook-poster-note { margin: -3px 1px 0; color: #8f785b; font-size: 10px; line-height: 1.55; }
+
+@media (max-width: 760px) {
+  .handbook-day-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media (max-width: 560px) {
+  .handbook-preview-card, .handbook-poster-card { padding: 14px; border-radius: 20px; }
+  .handbook-section-heading { align-items: start; }
+  .handbook-section-heading h2 { font-size: 19px; }
+  .handbook-section-heading p:last-child { font-size: 10px; }
+  .handbook-cover { min-height: 180px; }
+  .handbook-cover img { max-height: 360px; }
+  .handbook-cover-copy { right: 8px; bottom: 8px; left: 8px; padding: 8px 9px; }
+  .handbook-cover-copy strong { font-size: 13px; }
+  .handbook-cover-copy small { font-size: 9px; }
+  .handbook-day-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 7px; }
+  .handbook-day-copy { padding: 8px; }
+  .handbook-day-copy strong { font-size: 11px; }
+  .handbook-poster-card .section-heading { align-items: flex-start; }
+  .handbook-poster-card .section-heading .small-button { margin-top: 3px; }
+  .handbook-poster img { max-height: none; }
+}

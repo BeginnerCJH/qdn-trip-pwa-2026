@@ -1,4 +1,4 @@
-const CACHE_NAME = "qdn-trip-v41";
+const CACHE_NAME = "qdn-trip-v42";
 const ASSETS = [
   "./",
   "./index.html",
@@ -16,12 +16,20 @@ const ASSETS = [
   "./src/format.js",
   "./src/weather.js",
   "./src/map.js",
+  "./src/handbook.js",
   "./src/views/overview.js",
   "./src/views/route.js",
   "./src/views/guide.js",
+  "./src/views/handbook.js",
   "./src/views/prep.js",
   "./src/views/expenses.js",
-  "./src/views/tools.js"
+  "./src/views/tools.js",
+  "./assets/handbook/route-overview.png",
+  "./assets/handbook/day-1.png",
+  "./assets/handbook/day-2.png",
+  "./assets/handbook/day-3.png",
+  "./assets/handbook/day-4.png",
+  "./assets/handbook/day-5.png"
 ];
 
 self.addEventListener("install", (event) => {
