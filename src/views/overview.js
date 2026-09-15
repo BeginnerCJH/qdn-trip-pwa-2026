@@ -1,4 +1,4 @@
-import { hardDeadlineData } from "../selectors.js?v=40";
+import { hardDeadlineData } from "../selectors.js?v=41";
 
 export function renderOverview(ctx) {
   const { trip, state, overviewDay, currentPhase, nextAction, tripHeroStatus, ticketCounts, escapeHtml, statusBadge } = ctx;

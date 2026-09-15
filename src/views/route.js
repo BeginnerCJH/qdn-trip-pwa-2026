@@ -1,4 +1,4 @@
-import { renderGuide } from "./guide.js?v=40";
+import { renderGuide } from "./guide.js?v=41";
 
 export function renderRoute(ctx) {
   const { state, activeDay, trip, escapeHtml } = ctx;
