@@ -1,4 +1,5 @@
-import { renderGuide } from "./guide.js?v=41";
+import { renderGuide } from "./guide.js?v=42";
+import { renderHandbookPoster } from "./handbook.js?v=42";
 
 export function renderRoute(ctx) {
   const { state, activeDay, trip, escapeHtml } = ctx;
@@ -12,6 +13,7 @@ export function renderRoute(ctx) {
     ${state.showAllDays ? "" : renderRouteSummary(day, trip, escapeHtml)}
     <div class="route-list">${visibleDays.map((item) => renderDay(ctx, item)).join("")}</div>
     ${state.showAllDays ? "" : renderGuide(ctx, day)}
+    ${state.showAllDays ? "" : renderHandbookPoster(ctx, day)}
     ${state.showAllDays ? "" : renderJournal(ctx, day)}
     ${state.showAllDays ? "" : renderAlternatives(ctx, day)}
   `;

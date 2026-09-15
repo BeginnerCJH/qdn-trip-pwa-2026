@@ -1,4 +1,5 @@
-import { hardDeadlineData } from "../selectors.js?v=41";
+import { hardDeadlineData } from "../selectors.js?v=42";
+import { renderHandbookPreview } from "./handbook.js?v=42";
 
 export function renderOverview(ctx) {
   const { trip, state, overviewDay, currentPhase, nextAction, tripHeroStatus, ticketCounts, escapeHtml, statusBadge } = ctx;
@@ -39,6 +40,8 @@ export function renderOverview(ctx) {
     </section>
 
     ${renderJourneySpine(ctx, dayIndex)}
+
+    ${renderHandbookPreview(ctx)}
 
     <section class="home-progress-card">
       <div class="home-progress-head"><div><span class="eyebrow">准备概览</span><h3>已经确认的事</h3></div><button class="small-button ghost" data-view="prep">打开准备 ↗</button></div>

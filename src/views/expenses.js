@@ -1,4 +1,4 @@
-import { calculateBalances, calculateSettlements } from "../selectors.js?v=41";
+import { calculateBalances, calculateSettlements } from "../selectors.js?v=42";
 
 export function renderExpenses(ctx) {
   const { trip, state, escapeHtml, money } = ctx;
