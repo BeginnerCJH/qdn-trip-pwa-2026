@@ -148,7 +148,13 @@ button { cursor: pointer; }
 
 @media (max-width: 560px) {
   .app-shell { padding-right: 14px; padding-left: 14px; }
-  .topbar { padding-top: 21px; }.live-status { max-width: 245px; line-height: 1.4; gap: 5px; }.live-chip { padding: 6px 7px; }.live-chip-icon { flex-basis: 23px; width: 23px; height: 23px; font-size: 13px; }.live-chip-copy b { font-size: 10px; }.live-chip-copy small { font-size: 8px; }
+  .topbar { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 0 10px; padding-top: 21px; }
+  .topbar > div:first-child { display: contents; }
+  .topbar > div:first-child > .eyebrow { grid-column: 1; grid-row: 1; }
+  .topbar > div:first-child > h1 { grid-column: 1; grid-row: 2; padding-right: 6px; }
+  .topbar-actions { grid-column: 2; grid-row: 1 / span 2; align-self: start; }
+  .live-status { grid-column: 1 / -1; grid-row: 3; width: 100%; max-width: none; flex-wrap: nowrap; line-height: 1.4; gap: 5px; }
+  .live-chip { flex: 1 1 0; padding: 6px 7px; }.live-chip-icon { flex-basis: 23px; width: 23px; height: 23px; font-size: 13px; }.live-chip-copy b { font-size: 10px; }.live-chip-copy small { font-size: 8px; }
   .install-button { min-height: 36px; padding: 0 9px; font-size: 10px; }
   .hero-card { padding: 21px 19px; }.phase-card { grid-template-columns: 1fr; }.phase-next { padding-top: 12px; padding-left: 0; border-top: 1px solid rgba(46,90,73,.16); border-left: 0; }
   .hero-card h2 { margin-top: 16px; font-size: clamp(16px, 5.6vw, 29px); }

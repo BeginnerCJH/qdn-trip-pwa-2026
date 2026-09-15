@@ -1,15 +1,15 @@
-import { trip } from "./trip-data.js?v=40";
-import { bindEvents as bindDelegatedEvents } from "./src/events.js?v=40";
-import { createShareUrl, createTripState } from "./src/state.js?v=40";
-import { selectActiveDay, selectCurrentPhase, selectNextAction, selectOverviewDay, selectTicketCounts, selectTripHeroStatus } from "./src/selectors.js?v=40";
-import { daysUntil, escapeHtml, formatDate, money, statusBadge, ticketTone } from "./src/format.js?v=40";
-import { fetchWeather } from "./src/weather.js?v=40";
-import { mountRouteMap, destroyRouteMap } from "./src/map.js?v=40";
-import { renderOverview as renderOverviewView } from "./src/views/overview.js?v=40";
-import { renderRoute as renderRouteView } from "./src/views/route.js?v=40";
-import { renderPrep as renderPrepView } from "./src/views/prep.js?v=40";
-import { renderExpenses as renderExpensesView } from "./src/views/expenses.js?v=40";
-import { renderTools as renderToolsView } from "./src/views/tools.js?v=40";
+import { trip } from "./trip-data.js?v=41";
+import { bindEvents as bindDelegatedEvents } from "./src/events.js?v=41";
+import { createShareUrl, createTripState } from "./src/state.js?v=41";
+import { selectActiveDay, selectCurrentPhase, selectNextAction, selectOverviewDay, selectTicketCounts, selectTripHeroStatus } from "./src/selectors.js?v=41";
+import { daysUntil, escapeHtml, formatDate, money, statusBadge, ticketTone } from "./src/format.js?v=41";
+import { fetchWeather } from "./src/weather.js?v=41";
+import { mountRouteMap, destroyRouteMap } from "./src/map.js?v=41";
+import { renderOverview as renderOverviewView } from "./src/views/overview.js?v=41";
+import { renderRoute as renderRouteView } from "./src/views/route.js?v=41";
+import { renderPrep as renderPrepView } from "./src/views/prep.js?v=41";
+import { renderExpenses as renderExpensesView } from "./src/views/expenses.js?v=41";
+import { renderTools as renderToolsView } from "./src/views/tools.js?v=41";
 
 const app = document.querySelector("#app");
 const toast = document.querySelector("#toast");
@@ -399,7 +399,7 @@ document.querySelector("#shareButton").addEventListener("click", shareTrip);
 installButton?.addEventListener("click", installApp);
 updateInstallButton();
 
-if ("serviceWorker" in navigator && !window.Capacitor?.isNativePlatform?.()) window.addEventListener("load", () => navigator.serviceWorker.register("./sw.js?v=40").catch(() => {}));
+if ("serviceWorker" in navigator && !window.Capacitor?.isNativePlatform?.()) window.addEventListener("load", () => navigator.serviceWorker.register("./sw.js?v=41").catch(() => {}));
 
 try {
   render();
